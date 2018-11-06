@@ -1,11 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import NavigationBar from '../NavigationBar';
+import './styles.css'
 
-export default class index extends Component {
+export default class Title extends Component {
   render() {
     return (
-      <React.Fragment>
 
-      </React.Fragment>
+      <div className="wrapper">
+        <p className="title">Hacker News Stories</p>
+        <NavigationBar />
+      </div>
+
     )
   }
 }

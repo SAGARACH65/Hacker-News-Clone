@@ -20,7 +20,8 @@ export default class StoriesList extends Component {
         this.setState({
             currentPage: newPage
         });
-        this.forceUpdate();
+
+        this.fetchStories();
     }
 
     setStoriesToShow(result) {
@@ -30,7 +31,7 @@ export default class StoriesList extends Component {
             storiesToShow.push(result[i]);
     }
 
-    componentDidMount() {
+    fetchStories() {
         fetch(URL_TOP_STORIES)
             .then(res => res.json())
             .then(
@@ -45,6 +46,10 @@ export default class StoriesList extends Component {
                     console.log(error);
                 }
             )
+    }
+
+    componentDidMount() {
+        this.fetchStories();
     }
 
     render() {

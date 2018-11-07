@@ -1,15 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './styles.css'
 
-export default class NavigationBar extends Component {
-  render() {
-    return (
+const NavigationBar = (props) => {
+  return (
+    <div>
       <div className="title">
-        <button className="nav-button-left button">     </button>
-        <p >nav</p>
-        <button className="nav-button-right button">     </button>
+        <button
+          className="nav-button-left button"
+          onClick={() => props.handleCurrentPageChange(((props.currentPage - 1) >= 1) ? (props.currentPage - 1) : props.currentPage)}
+        >
+        </button>
+
+        <p>{props.currentPage}</p>
+
+        <button
+          className="nav-button-right button"
+          onClick={() => props.handleCurrentPageChange(props.currentPage + 1)}
+        >
+        </button>
 
       </div>
-    )
-  }
+    </div>
+  )
 }
+export default NavigationBar;

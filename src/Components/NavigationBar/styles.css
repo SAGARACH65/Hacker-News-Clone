@@ -2,22 +2,19 @@
     display: flex;
     padding-left: 420px;
     padding-top: 40px;
-   
 }
 
 .nav-button-left {
     background-image: url('./arrow-left.png');
-    
 }
 
 .nav-button-right {
     background-image: url('./arrow-right.png');
-   
 }
 
 .button {
-    width:30px;
-    height:30px;
+    width: 30px;
+    height: 30px;
     background-repeat: no-repeat;
     background-size: contain;
     border: 0px;

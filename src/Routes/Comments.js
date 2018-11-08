@@ -9,7 +9,7 @@ export default class Comments extends Component {
   render() {
     return (
       <>
-        <h1>comments</h1>
+        <h1>{this.props.match.params.id}</h1>
       </>
     )
   }

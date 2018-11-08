@@ -9,7 +9,7 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route path='/' exact component={StoriesList} />
-          <Route path='/comments/' component={Comments} />
+          <Route path='/comments/:id' component={Comments} />
         </Switch>
       </BrowserRouter>
     );

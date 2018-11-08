@@ -2,17 +2,16 @@
     border-bottom: 1px solid #efefef;
 }
 
-a {
+.stories {
     text-decoration: none;
     color: #49c;
-}
-
-a:hover {
-    text-decoration: underline;
-    color: lightseagreen;
-}
-
-.stories {
     text-align: center;
     margin: 22px;
+}
+
+
+.stories:hover {
+    text-decoration: underline;
+    color: lightseagreen;
+    cursor: pointer;
 }

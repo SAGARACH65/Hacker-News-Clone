@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './styles.css';
+import StoryInfo from '../StoryInfo';
 
 const URL_STORY = 'https://hacker-news.firebaseio.com/v0/item/';
 export default class ListItem extends Component {
@@ -9,7 +10,10 @@ export default class ListItem extends Component {
     this.state = {
       link: '',
       title: '',
-      kids: ''
+      id: '',
+      descendants: '',
+      score: '',
+      by: ''
     }
   }
   componentDidMount() {
@@ -20,7 +24,10 @@ export default class ListItem extends Component {
           this.setState({
             link: result.url,
             title: result.title,
-            kids: result.kids
+            id: result.id,
+            descendants: result.descendants,
+            score: result.score,
+            by: result.by
           });
         },
         (error) => {
@@ -29,13 +36,21 @@ export default class ListItem extends Component {
       )
   }
 
+
+
   render() {
     return (
       <div className="list-wrapper">
-        <a href={this.state.link}>
-          <p className="stories">{this.state.title}</p>
+
+        <a target="blank" href={this.state.link} style={{ textDecoration: 'none' }} >
+          <p className="stories" >{this.state.title}</p>
         </a>
+
+
+        <StoryInfo id={this.state.id} score={this.state.score} descendants={this.state.descendants} by={this.state.by} />
+
       </div>
+
     )
   }
 }

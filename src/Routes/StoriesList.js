@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Title from '../Components/Title';
 import ListItem from '../Components/ListItem';
 
@@ -20,8 +20,6 @@ export default class StoriesList extends Component {
         this.setState({
             currentPage: newPage
         });
-
-        this.fetchStories();
     }
 
     setStoriesToShow(result) {
@@ -48,7 +46,12 @@ export default class StoriesList extends Component {
             )
     }
 
+
     componentDidMount() {
+        this.fetchStories();
+    }
+
+    componentDidUpdate() {
         this.fetchStories();
     }
 
@@ -56,9 +59,11 @@ export default class StoriesList extends Component {
         return (
             <>
                 <Title currentPage={this.state.currentPage} handleCurrentPageChange={this.handleCurrentPageChange} />
+
                 {storiesToShow.map(storyIndex => (
                     <ListItem
                         storyIndex={storyIndex}
+                        router={this.props.router}
                         key={storyIndex}
                     />
                 ))}

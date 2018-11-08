@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Title from '../Components/Title';
-import ListItem from '../Components/ListItem';
+import Title from '../Components/TitleStory';
+import Story from '../Components/Story';
 
 const URL_TOP_STORIES = "https://hacker-news.firebaseio.com/v0/topstories.json";
 let storiesToShow = [];
@@ -29,21 +29,17 @@ export default class StoriesList extends Component {
             storiesToShow.push(result[i]);
     }
 
-    fetchStories() {
-        fetch(URL_TOP_STORIES)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setStoriesToShow(result);
+    async fetchStories() {
 
-                    this.setState({
-                        stories: result
-                    });
-                },
-                (error) => {
-                    console.log(error);
-                }
-            )
+        let response = await fetch(URL_TOP_STORIES);
+        let result = await response.json();
+       
+        this.setStoriesToShow(result);
+
+        this.setState({
+            stories: result
+        });
+      
     }
 
 
@@ -61,9 +57,8 @@ export default class StoriesList extends Component {
                 <Title currentPage={this.state.currentPage} handleCurrentPageChange={this.handleCurrentPageChange} />
 
                 {storiesToShow.map(storyIndex => (
-                    <ListItem
+                    <Story
                         storyIndex={storyIndex}
-                        router={this.props.router}
                         key={storyIndex}
                     />
                 ))}

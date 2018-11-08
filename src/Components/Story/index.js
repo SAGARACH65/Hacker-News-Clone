@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import './styles.css';
 import StoryInfo from '../StoryInfo';
 
@@ -16,27 +16,21 @@ export default class ListItem extends Component {
       by: ''
     }
   }
-  componentDidMount() {
-    fetch(`${URL_STORY}${this.props.storyIndex}.json`)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            link: result.url,
-            title: result.title,
-            id: result.id,
-            descendants: result.descendants,
-            score: result.score,
-            by: result.by
-          });
-        },
-        (error) => {
-          console.log(error);
-        }
-      )
+
+  async componentDidMount() {
+
+    let response = await fetch(`${URL_STORY}${this.props.storyIndex}.json`);
+    let result = await response.json();
+
+    this.setState({
+      link: result.url,
+      title: result.title,
+      id: result.id,
+      descendants: result.descendants,
+      score: result.score,
+      by: result.by
+    });
   }
-
-
 
   render() {
     return (
@@ -46,11 +40,9 @@ export default class ListItem extends Component {
           <p className="stories" >{this.state.title}</p>
         </a>
 
-
         <StoryInfo id={this.state.id} score={this.state.score} descendants={this.state.descendants} by={this.state.by} />
 
       </div>
-
     )
   }
 }

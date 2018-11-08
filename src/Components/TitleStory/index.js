@@ -1,6 +1,7 @@
 import React from 'react';
 import NavigationBar from '../NavigationBar';
 import './styles.css'
+import PropTypes from 'prop-types';
 
 
 const Title = (props) => {
@@ -11,6 +12,11 @@ const Title = (props) => {
     </div>
 
   )
+}
+
+Title.propTypes = {
+  currentPage: PropTypes.number,
+  handleCurrentPageChange: PropTypes.func
 }
 
 export default Title;

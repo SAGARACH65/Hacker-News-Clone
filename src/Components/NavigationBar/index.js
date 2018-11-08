@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles.css';
+import PropTypes from 'prop-types';
 
 const NavigationBar = (props) => {
   return (
@@ -23,4 +24,9 @@ const NavigationBar = (props) => {
     </div>
   )
 }
+
+NavigationBar.propTypes = {
+  currentPage: PropTypes.number
+}
+
 export default NavigationBar;

@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+
 import Story from '../Components/Story';
 
 // const STORY_URL=
 export default class Comments extends Component {
-  // static propTypes = {
-  //   prop: PropTypes
-  // }
+
 
   componentDidMount() {
     fetch()

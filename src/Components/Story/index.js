@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
 import './styles.css';
 import StoryInfo from '../StoryInfo';
+import PropTypes from 'prop-types';
+
 
 const URL_STORY = 'https://hacker-news.firebaseio.com/v0/item/';
-export default class ListItem extends Component {
+export default class Story extends Component {
 
   constructor() {
     super();
     this.state = {
       link: '',
       title: '',
-      id: '',
-      descendants: '',
-      score: '',
+      id: 0,
+      descendants: 0,
+      score: 0,
       by: ''
     }
   }
 
   async componentDidMount() {
-
     let response = await fetch(`${URL_STORY}${this.props.storyIndex}.json`);
     let result = await response.json();
 
@@ -45,4 +46,8 @@ export default class ListItem extends Component {
       </div>
     )
   }
+}
+
+Story.propTypes = {
+  storyIndex: PropTypes.number
 }

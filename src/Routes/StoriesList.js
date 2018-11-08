@@ -30,18 +30,15 @@ export default class StoriesList extends Component {
     }
 
     async fetchStories() {
-
         let response = await fetch(URL_TOP_STORIES);
         let result = await response.json();
-       
+
         this.setStoriesToShow(result);
 
         this.setState({
             stories: result
         });
-      
     }
-
 
     componentDidMount() {
         this.fetchStories();

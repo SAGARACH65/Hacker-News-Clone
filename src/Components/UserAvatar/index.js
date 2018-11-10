@@ -15,7 +15,6 @@ const UserAvatar = props => {
 }
 
 UserAvatar.propTypes = {
-    text: PropTypes.string.isRequired,
     time: PropTypes.string.isRequired,
     by: PropTypes.string.isRequired
 }

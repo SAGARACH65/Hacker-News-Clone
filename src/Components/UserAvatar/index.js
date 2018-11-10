@@ -7,8 +7,8 @@ const UserAvatar = props => {
         <div className="container-avatar">
             <img src={require('./user.png')} alt="NA" className="user-img" />
             <div>
-                <p >{props.by}</p>
-                <p>{props.time} ago</p>
+                <p className="written-by" ><strong>{props.by}</strong></p>
+                <p className="written-on">{props.time} ago</p>
             </div>
         </div>
     )

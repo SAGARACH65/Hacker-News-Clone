@@ -3,13 +3,24 @@
 }
 
 .user-img {
-    width: 90px;
-    height: 80px;
+    width: 100px;
+    height: 85px;
 }
 
 .container-avatar p {
-    font-size: 15px;
     align-items: center;
     text-align: center;
-    margin-top:0px;
+    margin-top: 0px;
+}
+
+.written-by {
+    font-size: 15px;
+ 
+    color: #49c
+}
+
+.written-on {
+    font-size: 14px;
+ 
+    color: gray
 }

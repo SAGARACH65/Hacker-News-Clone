@@ -15,7 +15,7 @@ export default class Comments extends Component {
       kids: [],
       title: '',
       url: '',
-      time: 0
+      time: ''
     }
   }
 

@@ -1,5 +1,6 @@
-.title-container {
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+
+.comment-container {
+    display: flex;
+    border-bottom: 0.5px solid #efefef;
+    padding-top:20px;
 }

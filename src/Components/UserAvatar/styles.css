@@ -1,0 +1,15 @@
+.container-avatar {
+    padding-right: 30px;
+}
+
+.user-img {
+    width: 90px;
+    height: 80px;
+}
+
+.container-avatar p {
+    font-size: 15px;
+    align-items: center;
+    text-align: center;
+    margin-top:0px;
+}

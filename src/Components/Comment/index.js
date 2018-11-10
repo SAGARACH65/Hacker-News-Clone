@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { calculateTimeDifference } from '../../Utils.js'
+import UserAvatar from '../UserAvatar'
+import './styles.css'
 
 const COMMENT_URL = 'https://hacker-news.firebaseio.com/v0/item/';
 
@@ -15,7 +17,7 @@ export default class Comment extends Component {
             text: '',
             by: '',
             kids: [],
-            time: 0
+            time: ''
         }
     }
 
@@ -33,8 +35,9 @@ export default class Comment extends Component {
 
     render() {
         return (
-            <div style={{ paddingLeft: this.props.margin }} >
-                <h3>{this.state.text}</h3>
+            <div className='comment-container' style={{ marginLeft: this.props.margin }} >
+                <UserAvatar text={this.state.text} time={this.state.time} by={this.state.by} />
+                <p>{this.state.text}</p>
             </div >
         )
     }

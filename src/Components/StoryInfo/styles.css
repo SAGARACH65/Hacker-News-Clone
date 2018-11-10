@@ -1,7 +1,9 @@
 .info {
     text-decoration: none;
     color: #49c;
-    text-align: center
+    text-align: center;
+    margin-bottom: 22px;
+    margin-top: 5px;
 }
 
 a {

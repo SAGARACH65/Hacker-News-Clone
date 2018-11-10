@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import './styles.css';
 import StoryInfo from '../StoryInfo';
 import PropTypes from 'prop-types';
-
+import { timeConverter} from '../../Utils.js'
 
 const URL_STORY = 'https://hacker-news.firebaseio.com/v0/item/';
-export default class Story extends Component {
 
+export default class Story extends Component {
+  static propTypes = {
+    storyIndex: PropTypes.number.isRequired
+  }
   constructor() {
     super();
     this.state = {
@@ -15,7 +18,8 @@ export default class Story extends Component {
       id: 0,
       descendants: 0,
       score: 0,
-      by: ''
+      by: '',
+      time: 0
     }
   }
 
@@ -29,7 +33,8 @@ export default class Story extends Component {
       id: result.id,
       descendants: result.descendants,
       score: result.score,
-      by: result.by
+      by: result.by,
+      time: result.time
     });
   }
 
@@ -38,16 +43,19 @@ export default class Story extends Component {
       <div className="list-wrapper">
 
         <a target="blank" href={this.state.link} style={{ textDecoration: 'none' }} >
-          <p className="stories" >{this.state.title}</p>
+          <strong> <p className="stories" >{this.state.title}</p></strong>
         </a>
 
-        <StoryInfo id={this.state.id} score={this.state.score} descendants={this.state.descendants} by={this.state.by} />
+        <StoryInfo
+          id={this.state.id}
+          date={timeConverter(this.state.time).date}
+          score={this.state.score}
+          descendants={this.state.descendants}
+          by={this.state.by}
+        />
 
       </div>
     )
   }
 }
 
-Story.propTypes = {
-  storyIndex: PropTypes.number
-}

@@ -6,9 +6,10 @@
     text-decoration: none;
     color: #49c;
     text-align: center;
+    font-size: 20px;
     margin: 22px;
+    margin-bottom: 2px;
 }
-
 
 .stories:hover {
     text-decoration: underline;

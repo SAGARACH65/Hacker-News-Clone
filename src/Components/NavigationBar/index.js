@@ -26,7 +26,7 @@ const NavigationBar = (props) => {
 }
 
 NavigationBar.propTypes = {
-  currentPage: PropTypes.number
+  currentPage: PropTypes.number.isRequired
 }
 
 export default NavigationBar;

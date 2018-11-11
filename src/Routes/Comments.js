@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import CommentHeader from '../Components/CommentHeader';
 import Comment from '../Components/Comment';
-import { calculateTimeDifference } from '../Utils.js'
+import { calculateTimeDifference } from '../Utils/TimeConverter.js'
 
 const STORY_URL = 'https://hacker-news.firebaseio.com/v0/item/';
 const MARGIN = 100;
@@ -71,7 +71,6 @@ export default class Comments extends Component {
       return result;
     }));
 
-    // Flatten the results
     return [].concat(...result);
 
   }

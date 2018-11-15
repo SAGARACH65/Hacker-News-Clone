@@ -1,6 +1,6 @@
 import React from 'react';
-import NavigationBar from '../NavigationBar';
-import './styles.css'
+import NavigationBar from './navigationBar';
+import '../../styles.css'
 import PropTypes from 'prop-types';
 
 const Title = (props) => {

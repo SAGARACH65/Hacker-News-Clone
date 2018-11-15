@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './styles.css';
-import StoryInfo from '../StoryInfo';
+import '../../styles.css';
+import StoryInfo from './storyInfo';
 import PropTypes from 'prop-types';
-import { timeConverter } from '../../Utils/TimeConverter'
+import { timeConverter } from '../../utils/timeConverter'
 
 const URL_STORY = 'https://hacker-news.firebaseio.com/v0/item/';
 

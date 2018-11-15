@@ -1,7 +1,7 @@
 
 import React from 'react';
-import UserAvatar from '../UserAvatar';
-import './styles.css';
+import UserAvatar from './userAvatar';
+import '../../styles.css';
 import PropTypes from 'prop-types';
 
 const Comment = props => {

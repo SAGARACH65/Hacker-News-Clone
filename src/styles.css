@@ -1,0 +1,130 @@
+.title {
+    font-size: 25px;
+    text-align: center;
+    padding-top: 20px;
+    font-weight: 600;
+  
+}
+
+.wrapper {
+    background-color: #424242;
+    color: white;
+    margin-top: 0px;
+    justify-content: center;
+    display: flex;
+}
+.info {
+    text-decoration: none;
+    color: #49c;
+    text-align: center;
+    margin-bottom: 22px;
+    margin-top: 5px;
+}
+
+a {
+    text-decoration: none;
+    color: #49c
+}
+
+a:hover {
+    text-decoration: underline
+}
+
+.list-wrapper {
+    border-bottom: 1px solid #efefef;
+}
+
+.stories {
+    text-decoration: none;
+    color: #49c;
+    text-align: center;
+    font-size: 20px;
+    margin: 22px;
+    margin-bottom: 2px;
+}
+
+.stories:hover {
+    text-decoration: underline;
+    color: lightseagreen;
+    cursor: pointer;
+}
+.title {
+    display: flex;
+    padding-left: 420px;
+    padding-top: 40px;
+}
+
+.nav-button-left {
+    background-image: url('./assets/arrow-left.png');
+}
+
+.nav-button-right {
+    background-image: url('./assets/arrow-right.png');
+}
+
+.button {
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0px;
+    background-color: #424242;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.container-avatar {
+    padding-right: 30px;
+}
+
+.user-img {
+    width: 100px;
+    height: 85px;
+}
+
+.container-avatar p {
+    align-items: center;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.written-by {
+    font-size: 15px;
+    color: #49c
+}
+
+.written-on {
+    font-size: 14px;
+    color: gray
+}
+
+.header {
+    font-size: 30px;
+    text-align: center;
+    padding: 30px;
+    padding-top: 50px;
+    font-weight: 600;
+    background-color: #424242;
+    color: white;
+    margin-top: 0px;
+    justify-content: center;
+}
+
+.title-container {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.title-comment{
+    font-size: 25px;
+}
+.author{
+    margin-top:-20px;
+    color:#49c;
+}
+
+
+.comment-container {
+    display: flex;
+    border-bottom: 0.5px solid #efefef;
+    padding-top:20px;
+}

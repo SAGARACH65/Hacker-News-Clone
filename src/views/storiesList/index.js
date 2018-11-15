@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Title from '../Components/TitleStory';
-import Story from '../Components/Story';
+import Title from './titleStory';
+import Story from './story';
 
 const URL_TOP_STORIES = "https://hacker-news.firebaseio.com/v0/topstories.json";
 const STORIES_IN_SINGLE_PAGE = 20;
@@ -14,21 +14,21 @@ export default class StoriesList extends Component {
         }
     }
 
-    handleCurrentPageChange = (newPage) => {
+    handleCurrentPageChange = newPage => {
         this.setState({
             currentPage: newPage
         });
     }
 
     async fetchStories() {
-        let response = await fetch(URL_TOP_STORIES);
-        let result = await response.json();
+        const response = await fetch(URL_TOP_STORIES);
+        const result = await response.json();
 
-        let storiesToShow = [];
-        let start = (this.state.currentPage - 1) * STORIES_IN_SINGLE_PAGE;
+        const start = (this.state.currentPage - 1) * STORIES_IN_SINGLE_PAGE;
+        const storiesToShow = result.splice(start, STORIES_IN_SINGLE_PAGE);
 
-        for (let i = start; i < start + STORIES_IN_SINGLE_PAGE; i++)
-            storiesToShow.push(result[i]);
+        // for (let i = start; i < start + STORIES_IN_SINGLE_PAGE; i++)
+        //     storiesToShow.push(result[i]);
 
         this.setState({
             stories: storiesToShow

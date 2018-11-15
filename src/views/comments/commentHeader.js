@@ -5,7 +5,7 @@ import '../../styles.css';
 const CommentHeader = props => {
     return (
         <>
-            <p className="header">Comments</p>
+        
             <div className="title-container">
                 <a href={props.url}> <p className="title-comment">{props.title}</p></a>
                 <p className="author">by {props.by} {props.time} ago</p>

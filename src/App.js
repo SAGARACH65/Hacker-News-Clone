@@ -21,3 +21,6 @@ class App extends Component {
 }
 
 export default App;
+
+//route huda bittakai chuttai reducer halne teso vaye?
+///commments ma locally use vako cha variable so k garne teslai store ma halne ki nai?

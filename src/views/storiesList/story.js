@@ -18,17 +18,19 @@ class Story extends Component {
   }
 
   async componentDidMount() {
-    let response = await fetch(`${URL_STORY}${this.props.storyIndex}.json`);
-    let result = await response.json();
-    this.props.addStory(result.url, result.title, result.id, result.descendants, result.score, result.by, result.time);
+    const response = await fetch(`${URL_STORY}${this.props.storyIndex}.json`);
+    const result = await response.json();
+    this.props.addStory(result.url, result.title, result.id, result.descendants, result.kids, result.score, result.by, result.time);
   }
 
   render() {
     const story = this.props.storyDetails[this.props.storyIndex];
+  
     return (
 
       < div className="list-wrapper" >
-        {(story) ?
+        {(story)
+          ?
           <>
             <a target="blank" href={story.link} style={{ textDecoration: 'none' }} >
               <strong> <p className="stories" >{story.title}</p></strong>
@@ -42,9 +44,8 @@ class Story extends Component {
             />
           </>
           :
-          < div >
-            <Loading />
-          </div>
+          <Loading />
+
         }
 
       </div>
@@ -56,10 +57,9 @@ const mapStateToProps = ({ stories }) => ({
   storyDetails: stories.storiesDetails
 });
 
-
 const mapDispatchToProps = dispatch => ({
-  addStory: (link, title, id, descendants, score, by, time) => {
-    dispatch(addStory(link, title, id, descendants, score, by, time))
+  addStory: (link, title, id, descendants, kids, score, by, time) => {
+    dispatch(addStory(link, title, id, descendants, kids, score, by, time))
   }
 });
 

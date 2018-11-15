@@ -25,6 +25,7 @@ const stories = (state = INITIAL_STATE, action) => {
             };
 
         case ADD_STORY:
+      
             return {
                 ...state,
                 storiesDetails: {
@@ -33,6 +34,7 @@ const stories = (state = INITIAL_STATE, action) => {
                         link: action.link,
                         title: action.title,
                         id: action.id,
+                        kids: action.kids,
                         descendants: action.descendants,
                         score: action.score,
                         by: action.by,

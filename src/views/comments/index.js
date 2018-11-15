@@ -3,23 +3,14 @@ import CommentHeader from './commentHeader';
 import Comment from './comment';
 import { calculateTimeDifference } from '../../utils/timeConverter.js';
 import { connect } from 'react-redux';
+import { addComments, addStory } from '../../actions';
+import Loading from '../../components/loading'
 
 const STORY_URL = 'https://hacker-news.firebaseio.com/v0/item/';
 const MARGIN = 100;
 let comments = [];
 
-export default class Comments extends Component {
-
-  constructor() {
-    super();
-    this.state = {
-      by: '',
-      kids: [],
-      title: '',
-      url: '',
-      timeDifference: ''
-    }
-  }
+class Comments extends Component {
 
   async fetchComments(comment, margin) {
 
@@ -42,25 +33,40 @@ export default class Comments extends Component {
     const result = await response.json();
 
     comments = await this.fetchComments(result.kids, MARGIN);
-    this.setState({
-      by: result.by,
-      kids: result.kids,
-      title: result.title,
-      url: result.url,
-      timeDifference: calculateTimeDifference(result.time)
-    });
+    this.props.addStory(result.url, result.title, result.id, result.descendants, result.kids, result.score, result.by, calculateTimeDifference(result.time));
   }
 
   render() {
+    const story = this.props.storiesDetails[this.props.match.params.id];
     return (
-      <>
-        <CommentHeader by={this.state.by} title={this.state.title} url={this.state.url} time={this.state.timeDifference} />
+      <div>
+        <p className="header">Comments</p>
+        {(story)
+          ?
+          <>
+            <CommentHeader by={story.by} title={story.title} url={story.url} time={story.time} />
 
-        {comments.map(comment => (
-          <Comment by={comment.by} margin={comment.margin} text={comment.text} time={comment.timeDifference} />
-        ))}
+            {comments.map(comment => (
+              <Comment by={comment.by} margin={comment.margin} text={comment.text} time={comment.timeDifference} />
+            ))}
 
-      </>
+          </>
+          :
+          <Loading />
+        }
+      </div>
     )
   }
 }
+
+const mapStateToProps = ({ stories }) => ({
+  storiesDetails: stories.storiesDetails
+});
+
+const mapDispatchToProps = dispatch => ({
+  addStory: (link, title, id, descendants, kids, score, by, time) => {
+    dispatch(addStory(link, title, id, descendants, kids, score, by, time))
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Comments);

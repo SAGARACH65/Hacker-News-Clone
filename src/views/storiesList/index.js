@@ -1,38 +1,31 @@
 import React, { Component } from 'react';
 import Title from './titleStory';
 import Story from './story';
+import { connect } from 'react-redux';
+import { addStoriesID, addCurrentPage } from '../../actions';
+import Spinner from '../../components/loading';
+import PropTypes from 'prop-types';
+
 
 const URL_TOP_STORIES = "https://hacker-news.firebaseio.com/v0/topstories.json";
-const STORIES_IN_SINGLE_PAGE = 20;
 
-export default class StoriesList extends Component {
-    constructor() {
-        super();
-        this.state = {
-            currentPage: 1,
-            stories: [],
-        }
+class StoriesList extends Component {
+
+    static propTypes = {
+        addCurrentPage: PropTypes.func.isRequired,
+        addStoriesId: PropTypes.func.isRequired,
+        storiesId: PropTypes.array.isRequired,
     }
 
     handleCurrentPageChange = newPage => {
-        this.setState({
-            currentPage: newPage
-        });
+        this.props.addCurrentPage(newPage);
     }
 
     async fetchStories() {
         const response = await fetch(URL_TOP_STORIES);
         const result = await response.json();
 
-        const start = (this.state.currentPage - 1) * STORIES_IN_SINGLE_PAGE;
-        const storiesToShow = result.splice(start, STORIES_IN_SINGLE_PAGE);
-
-        // for (let i = start; i < start + STORIES_IN_SINGLE_PAGE; i++)
-        //     storiesToShow.push(result[i]);
-
-        this.setState({
-            stories: storiesToShow
-        });
+        this.props.addStoriesId(result);
     }
 
     componentDidMount() {
@@ -46,15 +39,35 @@ export default class StoriesList extends Component {
     render() {
         return (
             <>
-                <Title currentPage={this.state.currentPage} handleCurrentPageChange={this.handleCurrentPageChange} />
+                <Title currentPage={this.props.currentPage} handleCurrentPageChange={this.handleCurrentPageChange} />
 
-                {this.state.stories.map(storyIndex => (
-                    <Story
-                        storyIndex={storyIndex}
-                        key={storyIndex}
-                    />
-                ))}
+                {
+                    (this.props.storiesId.length > 0)
+                        ?
+                        this.props.storiesId.map(storyIndex => (
+                            <Story
+                                storyIndex={storyIndex}
+                                key={storyIndex}
+                            />
+                        ))
+                        :
+                        <Spinner />
+
+                }
             </>
         )
     }
 }
+
+const mapStateToProps = ({ stories }) => ({
+    currentPage: stories.currentPage,
+    storiesId: stories.storiesId
+});
+
+
+const mapDispatchToProps = dispatch => ({
+    addStoriesId: stories => { dispatch(addStoriesID(stories)) },
+    addCurrentPage: currentPage => { dispatch(addCurrentPage(currentPage)) }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(StoriesList);

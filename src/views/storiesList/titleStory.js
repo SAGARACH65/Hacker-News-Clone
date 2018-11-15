@@ -3,6 +3,7 @@ import NavigationBar from './navigationBar';
 import '../../styles.css'
 import PropTypes from 'prop-types';
 
+
 const Title = (props) => {
   return (
     <div className="wrapper">
@@ -13,7 +14,6 @@ const Title = (props) => {
 }
 
 Title.propTypes = {
-  currentPage: PropTypes.number.isRequired,
   handleCurrentPageChange: PropTypes.func.isRequired
 }
 

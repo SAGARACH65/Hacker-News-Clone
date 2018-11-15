@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import CommentHeader from './commentHeader';
 import Comment from './comment';
-import { calculateTimeDifference } from '../../utils/timeConverter.js'
+import { calculateTimeDifference } from '../../utils/timeConverter.js';
+import { connect } from 'react-redux';
 
 const STORY_URL = 'https://hacker-news.firebaseio.com/v0/item/';
 const MARGIN = 100;

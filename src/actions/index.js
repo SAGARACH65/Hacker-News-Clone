@@ -3,9 +3,9 @@ export const ADD_STORIES_ID = 'ADD_STORY_ID';
 export const ADD_STORY = 'ADD_STORIES';
 export const ADD_CURRENT_PAGE = "ADD_CURRENT_PAGE";
 
-export const addComments = () => ({
+export const addComments = comments => ({
     type: ADD_COMMENTS,
-
+    comments: comments
 });
 
 export const addStoriesID = stories => ({

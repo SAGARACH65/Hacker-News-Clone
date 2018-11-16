@@ -9,7 +9,8 @@ const STORIES_IN_SINGLE_PAGE = 20;
 const INITIAL_STATE = {
     currentPage: 1,
     storiesDetails: [],
-    storiesId: []
+    storiesId: [],
+    commentList: [], 
 };
 
 const stories = (state = INITIAL_STATE, action) => {

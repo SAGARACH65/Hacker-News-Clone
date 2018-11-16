@@ -4,13 +4,10 @@ import '../../styles.css';
 
 const CommentHeader = props => {
     return (
-        <>
-        
-            <div className="title-container">
-                <a href={props.url}> <p className="title-comment">{props.title}</p></a>
-                <p className="author">by {props.by} {props.time} ago</p>
-            </div>
-        </>
+        <div className="title-container">
+            <a href={props.url}> <p className="title-comment">{props.title}</p></a>
+            <p className="author">by {props.by} {props.time} ago</p>
+        </div>
     )
 }
 

@@ -32,25 +32,27 @@ class Comments extends Component {
     const response = await fetch(`${STORY_URL}${this.props.match.params.id}.json`);
     const result = await response.json();
 
-    comments = await this.fetchComments(result.kids, MARGIN);
+    // comments = ;
+    this.props.addComments(await this.fetchComments(result.kids, MARGIN));
+
     this.props.addStory(result.url, result.title, result.id, result.descendants, result.kids, result.score, result.by, calculateTimeDifference(result.time));
   }
 
   render() {
-    const story = this.props.storiesDetails[this.props.match.params.id];
+    const story = this.props.storyDetails[this.props.match.params.id];
     return (
       <div>
         <p className="header">Comments</p>
-        {(story)
+        {(story && this.props.commentList)
           ?
-          <>
+          <div>
             <CommentHeader by={story.by} title={story.title} url={story.url} time={story.time} />
 
-            {comments.map(comment => (
+            {this.props.commentList.map(comment => (
               <Comment by={comment.by} margin={comment.margin} text={comment.text} time={comment.timeDifference} />
             ))}
 
-          </>
+          </div>
           :
           <Loading />
         }
@@ -59,13 +61,17 @@ class Comments extends Component {
   }
 }
 
-const mapStateToProps = ({ stories }) => ({
-  storiesDetails: stories.storiesDetails
+const mapStateToProps = ({ stories, comments }) => ({
+  storyDetails: stories.storiesDetails,
+  commentList: comments.comments
 });
 
 const mapDispatchToProps = dispatch => ({
   addStory: (link, title, id, descendants, kids, score, by, time) => {
     dispatch(addStory(link, title, id, descendants, kids, score, by, time))
+  },
+  addComments: comments => {
+    dispatch(addComments(comments))
   }
 });
 

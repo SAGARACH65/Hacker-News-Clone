@@ -1,17 +1,18 @@
 import React from 'react';
 import '../../styles.css'
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'
 
 const StoryInfo = props => {
     return (
-        < >
+        
             <p className='info'>
                 {props.score} points by <i>{props.by}</i> on {props.date + " "}
-                |<a href={`/comments/${props.id}`}>
+                |<Link to={`/comments/${props.id}`}>
                     {" " + props.descendants} comments
-                     </a>
+                     </Link>
             </p>
-        </>
+      
     )
 }
 

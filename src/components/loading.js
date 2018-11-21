@@ -1,7 +1,13 @@
 import React from 'react';
+import { ClipLoader } from 'react-spinners';
 
 export default function loading() {
     return (
-        <h1>Loading</h1>
+        <div className="loader">
+            <ClipLoader
+                color={'#49c'}
+                loading={true}
+            />
+        </div>
     );
 }

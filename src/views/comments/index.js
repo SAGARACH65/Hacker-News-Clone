@@ -8,7 +8,6 @@ import Loading from '../../components/loading'
 
 const STORY_URL = 'https://hacker-news.firebaseio.com/v0/item/';
 const MARGIN = 100;
-let comments = [];
 
 class Comments extends Component {
 
@@ -32,7 +31,6 @@ class Comments extends Component {
     const response = await fetch(`${STORY_URL}${this.props.match.params.id}.json`);
     const result = await response.json();
 
-    // comments = ;
     this.props.addComments(await this.fetchComments(result.kids, MARGIN));
 
     this.props.addStory(result.url, result.title, result.id, result.descendants, result.kids, result.score, result.by, calculateTimeDifference(result.time));

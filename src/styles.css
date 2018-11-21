@@ -13,6 +13,13 @@
     justify-content: center;
     display: flex;
 }
+
+.loader{
+align-content: center;
+    margin:0 auto;
+    padding-left:50%
+}
+
 .info {
     text-decoration: none;
     color: #49c;

@@ -18,6 +18,7 @@ const stories = (state = INITIAL_STATE, action) => {
     switch (action.type) {
 
         case ADD_STORIES_ID:
+        console.log('one')
             const start = (state.currentPage - 1) * STORIES_IN_SINGLE_PAGE;
 
             return {

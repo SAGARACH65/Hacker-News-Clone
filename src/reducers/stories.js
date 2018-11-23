@@ -10,7 +10,7 @@ const INITIAL_STATE = {
     currentPage: 1,
     storiesDetails: [],
     storiesId: [],
-    commentList: [], 
+    commentList: [],
 };
 
 const stories = (state = INITIAL_STATE, action) => {
@@ -18,7 +18,6 @@ const stories = (state = INITIAL_STATE, action) => {
     switch (action.type) {
 
         case ADD_STORIES_ID:
-        console.log('one')
             const start = (state.currentPage - 1) * STORIES_IN_SINGLE_PAGE;
 
             return {
@@ -27,7 +26,7 @@ const stories = (state = INITIAL_STATE, action) => {
             };
 
         case ADD_STORY:
-      
+
             return {
                 ...state,
                 storiesDetails: {
